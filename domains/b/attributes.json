@@ -5,9 +5,8 @@
   "domainVersion": "1.0",
   "description": "reference domain for devices, example only",
   "publishDate": "2015-07-20T18:59:33+0000",
-  "attributes": [
-    {
-      "patternId": "iphone",
+  "attributes": {
+    "iphone": {
       "parentId": "genericApple",
       "attributes": {
         "model": "iPhone",
@@ -17,8 +16,7 @@
         "ppi": "326"
       }
     },
-    {
-      "patternId": "ipad",
+    "ipad": {
       "parentId": "genericApple",
       "attributes": {
         "model": "iPad",
@@ -28,20 +26,18 @@
         "ppi": "132"
       }
     },
-    {
-      "patternId": "genericApple",
+    "genericApple": {
       "parentId": "root",
       "attributes": {
         "vendor": "Apple"
       }
     },
-    {
-      "patternId": "root",
+    "root": {
       "parentId": "_root",
       "attributes": {
         "isPhone": "false",
         "isTablet": "false"
       }
     }
-  ]
+  }
 }

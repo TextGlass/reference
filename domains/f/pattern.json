@@ -1,4 +1,4 @@
-{"specVersion": 1.0,"type":"pattern","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-05T15:17:07-0400",
+{"specVersion": 1.0,"type":"pattern","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-05T16:29:17-0400",
 "inputParser":{"transformers":[{"type":"LowerCase"}],
 "tokenSeperators":[" ",",",";"],"ngramConcatSize":2},
 "patternSet":{"defaultId":"unknown","simpleHashCount":4800,"patterns":[

@@ -3,7 +3,6 @@ TextGlass Reference Client
 
 [Internal TODO]
 -combine loadPattern and loadFile into 1 load with state
--fix attribute json to be an object
 
 
 WHAT IS THIS?

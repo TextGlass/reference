@@ -23,7 +23,7 @@ echo "\"tokenSeperators\":[\" \",\",\",\";\"],\"ngramConcatSize\":2}," >> $POUT
 echo "\"patternSet\":{\"defaultId\":\"unknown\",\"simpleHashCount\":$TOTAL,\"patterns\":[" >> $POUT
 
 echo $HEADER | sed "s/TYPE/attribute/" > $AOUT
-echo "\"attributes\":[" >> $AOUT
+echo "\"attributes\":{" >> $AOUT
 
 echo $HEADER | sed "s/TYPE/test/" > $TOUT
 echo "\"tests\":[" >> $TOUT
@@ -69,14 +69,14 @@ do
     echo "\"patternType\":\"SimpleOrderedAnd\",\"patternTokens\":[\"$CURRENT\",\"$ODDEVEN\"]}$LAST" >> $POUT
 
     #ATTRIBUTE
-    echo "{\"patternId\":\"p$CURRENT\",\"attributes\":{\"oe\":\"?\"}," >> $AOUT
+    echo "\"p$CURRENT\":{\"attributes\":{\"oe\":\"?\"}," >> $AOUT
     echo "\"attributeTransformers\":{\"number\":{\"transformers\":[{\"type\":\"SplitAndGet\"," >> $AOUT
     echo "\"parameters\":{\"delimeter\":\" \",\"get\":2}},{\"type\":\"IsNumber\"}]}}}," >> $AOUT
-    echo "{\"patternId\":\"p$CURRENT$ODDEVENP\",\"attributes\":{\"number\":\"oddeven\",\"oe\":\"$ODDEVEN\"}}$LAST" >> $AOUT
+    echo "\"p$CURRENT$ODDEVENP\":{\"attributes\":{\"number\":\"oddeven\",\"oe\":\"$ODDEVEN\"}}$LAST" >> $AOUT
 
     CURRENT=`expr $CURRENT + 1`
 done
 
 echo "]}}" >> $POUT
-echo "]}" >> $AOUT
+echo "}}" >> $AOUT
 echo "]}" >> $TOUT

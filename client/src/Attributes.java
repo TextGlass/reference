@@ -30,15 +30,11 @@ public class Attributes {
   private final Map<String, String> attributes;
   private final Map<String, AttributeTransformer> attributeTransformers;
 
-  public Attributes(JsonNode json) throws Exception {
+  public Attributes(String patternId, JsonNode json) throws Exception {
 
     //PARSE ATTRIBUTE JSON
 
-    if(JsonFile.empty(json, "patternId")) {
-      throw new Exception("Bad attribute patternId found");
-    }
-
-    patternId = json.get("patternId").asText();
+    this.patternId = patternId;
     parentId = (JsonFile.empty(json, "parentId") ? null : json.get("parentId").asText());
     attributeTransformers = new HashMap<>();
 

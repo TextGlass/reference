@@ -20,6 +20,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -225,7 +226,7 @@ public class TextGlassClient {
 
     //OPTIONAL ATTRIBUTES IN PATTERN FILE
     
-    if(JsonFile.get(patternFile.getJsonNode(), "attributes").isArray()) {
+    if(JsonFile.get(patternFile.getJsonNode(), "attributes").isObject()) {
       loadAttributes(patternFile);
     }
   }
@@ -258,15 +259,26 @@ public class TextGlassClient {
 
     int attributeCount = 0;
 
-    if(JsonFile.get(attributeFile.getJsonNode(), "attributes").isArray()) {
-      for(int i = 0; i < attributeFile.getJsonNode().get("attributes").size(); i++) {
-        JsonNode attributeNode = attributeFile.getJsonNode().get("attributes").get(i);
+    if(JsonFile.get(attributeFile.getJsonNode(), "attributes").isObject()) {
+      JsonNode attributesJson = attributeFile.getJsonNode().get("attributes");
+      for(Iterator<String> i = attributesJson.getFieldNames(); i.hasNext();) {
+        String patternId = i.next();
 
-        Attributes patternAttributes = new Attributes(attributeNode);
+        if(patternId.isEmpty()) {
+          throw new Exception("Empty patternId not allowed");
+        }
+
+        if(!JsonFile.get(attributesJson, patternId).isObject()) {
+          throw new Exception("Invalid attribute map for: " + patternId);
+        }
+
+        JsonNode attributeNode = attributesJson.get(patternId);
+
+        Attributes patternAttributes = new Attributes(patternId, attributeNode);
 
         Main.log(patternAttributes.toString(), 3);
 
-        attributes.put(patternAttributes.getPatternId(), patternAttributes);
+        attributes.put(patternId, patternAttributes);
 
         attributeCount++;
       }

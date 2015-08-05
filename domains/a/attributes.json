@@ -5,41 +5,35 @@
   "domainVersion": "1.0",
   "description": "reference domain a",
   "publishDate": "2015-07-10T15:14:00-0400",
-  "attributes": [
-    {
-      "patternId": "unknown",
+  "attributes": {
+    "unknown": {
       "attributes": {
         "error": "true"
       }
     },
-    {
-      "patternId": "pattern1",
+    "pattern1": {
       "attributes": {
         "test": "1"
       }
     },
-    {
-      "patternId": "pattern2",
+    "pattern2": {
       "parentId": "parent1",
       "attributes": {
         "test": "2"
       }
     },
-    {
-      "patternId": "parent1",
+    "parent1": {
       "attributes": {
         "parent": "1",
         "test": "4"
       }
     },
-    {
-      "patternId": "pattern3",
+    "pattern3": {
       "attributes": {
         "test": "3"
       }
     },
-    {
-      "patternId": "pattern4",
+    "pattern4": {
       "attributes": {
         "test": "4"
       },
@@ -68,5 +62,5 @@
         }
       }
     }
-  ]
+  }
 }

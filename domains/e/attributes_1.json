@@ -5,26 +5,23 @@
   "domainVersion": "1.0",
   "description": "reference domain a, patch files",
   "publishDate": "2015-08-01T17:41:44-0400",
-  "attributes": [
-    {
-      "patternId": "p1",
+  "attributes": {
+    "p1": {
       "parentId": "root",
       "attributes": {
         "test": "1"
       }
     },
-    {
-      "patternId": "p2",
+    "p2": {
       "parentId": "root",
       "attributes": {
         "test": "2"
       }
     },
-    {
-      "patternId": "root",
+    "root": {
       "attributes": {
         "root": "true"
       }
     }
-  ]
+  }
 }
