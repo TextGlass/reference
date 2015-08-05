@@ -20,13 +20,13 @@ This reference client is the starting point for:
 SPECIFICATION
 =============
 
-[wiki url here]
+https://github.com/TextGlass/reference/wiki/Domain-Specification
 
 
 SOURCE
 ======
 
-[source url here]
+https://github.com/TextGlass/reference/tree/master/client/src
 
 The source is broken up into several components:
 

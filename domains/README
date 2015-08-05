@@ -1,10 +1,6 @@
 TextGlass Reference Domains
 
 
-[Internal TODO]
--fix attribute json to be an object
-
-
 WHAT IS THIS?
 =============
 
@@ -16,5 +12,5 @@ These domains can be used to validate a TextGlass client.
 SPECIFICATION
 =============
 
-[wiki url here]
+https://github.com/TextGlass/reference/wiki/Domain-Specification
 
