@@ -1,0 +1,63 @@
+{
+  "specVersion": 1.0,
+  "type": "pattern",
+  "domain": "reference_a",
+  "domainVersion": "1.0",
+  "description": "reference domain a",
+  "publishDate": "2015-07-10T14:54:16-0400",
+  "inputParser": {
+    "transformers": [
+      {
+        "type": "LowerCase"
+      },
+      {
+        "type": "ReplaceAll",
+        "parameters": {
+          "find": "-",
+          "replaceWith": ""
+        }
+      }
+    ],
+    "tokenSeperators": [ " ", ",", ";" ],
+    "ngramConcatSize": 2
+  },
+  "patternSet": {
+    "defaultId": "unknown",
+    "simpleHashCount": 5,
+    "patterns": [
+      {
+        "patternId": "pattern1",
+        "rankType": "Strong",
+        "patternType": "Simple",
+        "patternTokens": ["bingo", "jackpot"]
+      },
+      {
+        "patternId": "pattern2",
+        "rankType": "Weak",
+        "rankValue": 250,
+        "patternType": "SimpleOrderedAnd",
+        "patternTokens": ["two", "four", "six"]
+      },
+      {
+        "patternId": "pattern3",
+        "rankType": "None",
+        "rankValue": 1000,
+        "patternType": "Simple",
+        "patternTokens": ["two", "four", "six"]
+      },
+      {
+        "patternId": "pattern4",
+        "rankType": "Strong",
+        "patternType": "Simple",
+        "patternTokens": ["Two", "ccc"]
+      },
+      {
+        "patternId": "pattern5",
+        "rankType": "Weak",
+        "rankValue": 200,
+        "patternType": "Simple",
+        "patternTokens": ["onenine"]
+      }
+    ]
+  }
+}

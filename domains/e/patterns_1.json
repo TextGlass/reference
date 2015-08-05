@@ -1,0 +1,35 @@
+{
+  "specVersion": 1.0,
+  "type": "pattern",
+  "domain": "reference_e",
+  "domainVersion": "1.0",
+  "description": "reference domain a, patch files",
+  "publishDate": "2015-08-01T17:41:44-0400",
+  "inputParser": {
+    "tokenSeperators": [ " ", ",", ";" ],
+    "ngramConcatSize": 2
+  },
+  "patternSet": {
+    "simpleHashCount": 3,
+    "patterns": [
+      {
+        "patternId": "p1",
+        "rankType": "Weak",
+        "patternType": "Simple",
+        "patternTokens": ["one"]
+      },
+      {
+        "patternId": "p2",
+        "rankType": "Weak",
+        "patternType": "Simple",
+        "patternTokens": ["two"]
+      },
+      {
+        "patternId": "error",
+        "rankType": "Strong",
+        "patternType": "Simple",
+        "patternTokens": ["thisis"]
+      }
+    ]
+  }
+}

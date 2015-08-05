@@ -1,0 +1,27 @@
+{
+  "specVersion": 1.0,
+  "type": "patternPatch",
+  "domain": "reference_e",
+  "domainVersion": "1.0",
+  "description": "reference domain a, patch files",
+  "publishDate": "2015-08-01T17:41:44-0400",
+  "inputParser": {
+    "transformers": [
+      {
+        "type": "LowerCase"
+      }
+    ],
+    "ngramConcatSize": 1
+  },
+  "patternSet": {
+    "simpleHashCount": 1,
+    "patterns": [
+      {
+        "patternId": "p3",
+        "rankType": "Weak",
+        "patternType": "Simple",
+        "patternTokens": ["three"]
+      }
+    ]
+  }
+}

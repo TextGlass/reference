@@ -1,0 +1,35 @@
+{
+  "specVersion": 1.0,
+  "type": "pattern",
+  "domain": "reference_b",
+  "domainVersion": "1.0",
+  "description": "reference domain for devices, example only",
+  "publishDate": "2015-07-20T18:52:57+0000",
+  "inputParser": {
+    "transformers": [
+      {
+        "type": "LowerCase"
+      }
+    ],
+    "tokenSeperators": [ " ", "-", "_", "\\", "/", "[", "]", "(", ")", ";" ],
+    "ngramConcatSize": 4
+  },
+  "patternSet": {
+    "defaultId": "unknown",
+    "simpleHashCount": 2,
+    "patterns": [
+      {
+        "patternId": "iphone",
+        "rankType": "Strong",
+        "patternType": "Simple",
+        "patternTokens": ["iphone"]
+      },
+      {
+        "patternId": "ipad",
+        "rankType": "Strong",
+        "patternType": "Simple",
+        "patternTokens": ["ipad"]
+      }
+    ]
+  }
+}

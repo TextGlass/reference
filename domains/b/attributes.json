@@ -1,0 +1,47 @@
+{
+  "specVersion": 1.0,
+  "type": "attribute",
+  "domain": "reference_b",
+  "domainVersion": "1.0",
+  "description": "reference domain for devices, example only",
+  "publishDate": "2015-07-20T18:59:33+0000",
+  "attributes": [
+    {
+      "patternId": "iphone",
+      "parentId": "genericApple",
+      "attributes": {
+        "model": "iPhone",
+        "isPhone": "true",
+        "displayWidth": "640",
+        "displayHeight": "960",
+        "ppi": "326"
+      }
+    },
+    {
+      "patternId": "ipad",
+      "parentId": "genericApple",
+      "attributes": {
+        "model": "iPad",
+        "isTablet": "true",
+        "displayWidth": "768",
+        "displayHeight": "1024",
+        "ppi": "132"
+      }
+    },
+    {
+      "patternId": "genericApple",
+      "parentId": "root",
+      "attributes": {
+        "vendor": "Apple"
+      }
+    },
+    {
+      "patternId": "root",
+      "parentId": "_root",
+      "attributes": {
+        "isPhone": "false",
+        "isTablet": "false"
+      }
+    }
+  ]
+}
