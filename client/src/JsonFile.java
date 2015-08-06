@@ -43,8 +43,8 @@ public class JsonFile {
       throw new Exception("JsonFile is not an object");
     }
 
-    if(get(json, "specVersion").asDouble(0d) != 1.0d) {
-      throw new Exception("Bad specVersion found: " + get(json, "specVersion").asDouble(0d));
+    if(get(json, "TextGlassSpecVersion").asDouble(0d) != 1.0d) {
+      throw new Exception("Bad TextGlassSpecVersion found: " + get(json, "TextGlassSpecVersion").asDouble(0d));
     }
 
     if(empty(json, "type")) {
