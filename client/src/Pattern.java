@@ -148,7 +148,7 @@ public class Pattern {
       int found = matchedTokens.indexOf(patternToken);
 
       if(found >= 0) {
-        length += matchedTokens.get(found).length();
+        length += patternToken.length();
       }
     }
     
