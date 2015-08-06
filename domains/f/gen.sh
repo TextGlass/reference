@@ -13,7 +13,7 @@ POUT=pattern.json
 AOUT=attribute.json
 TOUT=test.json
 
-HEADER="{\"specVersion\": 1.0,\"type\":\"TYPE\",\"domain\":\"reference_$NAME\",\
+HEADER="{\"TextGlassSpecVersion\": 1.0,\"type\":\"TYPE\",\"domain\":\"reference_$NAME\",\
 \"domainVersion\":\"$VERSION\",\"description\":\"reference domain $NAME, performance\"\
 ,\"publishDate\":\"$DATE\","
 

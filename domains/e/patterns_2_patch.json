@@ -1,5 +1,5 @@
 {
-  "specVersion": 1.0,
+  "TextGlassSpecVersion": 1.0,
   "type": "patternPatch",
   "domain": "reference_e",
   "domainVersion": "1.0",
