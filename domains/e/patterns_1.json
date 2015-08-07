@@ -31,5 +31,13 @@
         "patternTokens": ["thisis"]
       }
     ]
+  },
+  "attributes": {
+    "p1": {
+      "parentId": "root",
+      "attributes": {
+        "test": "1"
+      }
+    }
   }
 }
