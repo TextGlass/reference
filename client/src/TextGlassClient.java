@@ -237,16 +237,11 @@ public class TextGlassClient {
     
     if(!attributeFile.getType().equals("pattern") && !attributeFile.getType().equals("attribute") &&
         !attributeFile.getType().equals("patternPatch") && !attributeFile.getType().equals("attributePatch")) {
-      throw new Exception("Unknown pattern file type: " + attributeFile.getType());
+      throw new Exception("Unknown attribute file type: " + attributeFile.getType());
     }
 
     if(!attributeFile.getDomain().equals(domain)) {
       throw new Exception("Domains do not match: " + domain + " != " + attributeFile.getDomain());
-    }
-
-    if((attributeFile.getType().contains("Patch") && attributes.isEmpty()) ||
-        (!attributeFile.getType().contains("Patch") && !attributes.isEmpty())) {
-      throw new Exception("Invalid attribute file type: " + attributeFile.getType());
     }
 
     if(!attributeFile.getDomainVersion().equals(domainVersion)) {
