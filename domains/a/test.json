@@ -15,6 +15,10 @@
       }
     },
     {
+      "input": " one,two;three; ,four     five,,,six;;;seven  ",
+      "resultPatternId": "pattern2"
+    },
+    {
       "input": "one two three six five four seven",
       "resultPatternId": "pattern3"
     },
@@ -23,7 +27,23 @@
       "resultPatternId": "pattern1"
     },
     {
-      "input": "  three   four FIVE one-NINE ,;  seven",
+      "input": "one 222 ccc ready",
+      "resultPatternId": "pattern4",
+      "resultAttributes": {
+        "test": "4",
+        "transformed_attr": "222"
+      }
+    },
+    {
+      "input": "one two ccc ready",
+      "resultPatternId": "pattern4",
+      "resultAttributes": {
+        "test": "4",
+        "transformed_attr": "error"
+      }
+    },
+    {
+      "input": "three four FIVE one-NINE seven",
       "resultPatternId": "pattern5"
     }
   ]
