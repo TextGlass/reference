@@ -117,6 +117,17 @@
               }
             }
           ]
+        },
+        "replaced2" : {
+          "transformers": [
+            {
+              "type": "ReplaceAll",
+              "parameters": {
+                "find": "4",
+                "replaceWith": "4"
+              }
+            }
+          ]
         }
       }
     },
