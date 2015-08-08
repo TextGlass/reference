@@ -50,7 +50,7 @@ public class Main {
     for(int i = 0; i < args.length; i++) {
       String option = args[i];
 
-      if(option.startsWith("-h")) {
+      if(option.equals("-h")) {
         printHelp();
         return;
       } else if(option.equals("-p")) {
