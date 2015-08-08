@@ -9,8 +9,8 @@ NAME=f
 VERSION=1.0
 DATE=`date -Iseconds`
 
-POUT=pattern.json
-AOUT=attribute.json
+POUT=patterns.json
+AOUT=attributes.json
 TOUT=test.json
 
 HEADER="{\"TextGlassSpecVersion\": 1.0,\"type\":\"TYPE\",\"domain\":\"reference_$NAME\",\
