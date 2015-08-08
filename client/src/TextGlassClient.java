@@ -39,8 +39,8 @@ public class TextGlassClient {
   private int ngramConcatSize;
 
   //PATTERN MATCHING
-  private Map<String, List<Pattern>> patterns;
-  private Map<String, Attributes> attributes;
+  private final Map<String, List<Pattern>> patterns;
+  private final Map<String, Attributes> attributes;
 
   private String defaultId;
 
@@ -58,41 +58,89 @@ public class TextGlassClient {
     defaultId = null;
   }
 
-  public void loadPatterns(JsonFile patternFile) throws Exception {
+  public void load(JsonFile patternFile, JsonFile patternPatchFile,
+      JsonFile attributeFile, JsonFile attributePatchFile) throws Exception
+  {
 
-    //PARSE PATTERN FILE JSON
+    if(domain != null) {
+      throw new Exception("Client has already been initialized");
+    }
+
+    //GET THE DOMAIN
     
-    if(!patternFile.getType().equals("pattern") && !patternFile.getType().equals("patternPatch")) {
+    if(!patternFile.getType().equals("pattern")) {
       throw new Exception("Unknown pattern file type: " + patternFile.getType());
     }
-    
-    boolean patch = false;
 
-    if((patternFile.getType().equals("pattern") && domain != null) ||
-        (patternFile.getType().equals("patternPatch") && domain == null)) {
+    domain = patternFile.getDomain();
+    domainVersion = patternFile.getDomainVersion();
 
-    }
+    //VALIDATE PATTERN PATCH FILE
 
-    if(patternFile.getType().equals("pattern")) {
-      if(domain != null) {
-        throw new Exception("Invalid pattern file type: " + patternFile.getType());
-      } else {
-        domain = patternFile.getDomain();
+    if(patternPatchFile != null) {
+      if(!patternPatchFile.getType().equals("patternPatch")) {
+        throw new Exception("Unknown pattern patch file type: " + patternPatchFile.getType());
       }
-    } else if(domain == null) {
-      throw new Exception("Invalid pattern file type: " + patternFile.getType());
-    } else if(!domain.equals(patternFile.getDomain())) {
-      throw new Exception("Domains do not match: " + domain + " != " + patternFile.getDomain());
-    } else {
-      patch = true;
+
+      if(!domain.equals(patternPatchFile.getDomain())) {
+        throw new Exception("Domains do not match: " + domain + " != " + patternPatchFile.getDomain());
+      }
+
+      if(!domainVersion.equals(patternPatchFile.getDomainVersion())) {
+        throw new Exception("Versions do not match: " + domainVersion + " != " + patternPatchFile.getDomainVersion());
+      }
     }
 
-    if(domainVersion == null) {
-      domainVersion = patternFile.getDomainVersion();
-    } else if(!domainVersion.equals(patternFile.getDomainVersion())) {
-      throw new Exception("DomainVersions do not match: " + domainVersion + " != " + patternFile.getDomainVersion());
+    //VALIDATE ATTRIBUTE FILE
+
+    if(attributeFile != null) {
+      if(!attributeFile.getType().equals("attribute")) {
+        throw new Exception("Unknown attribute file type: " + attributeFile.getType());
+      }
+
+      if(!domain.equals(attributeFile.getDomain())) {
+        throw new Exception("Domains do not match: " + domain + " != " + attributeFile.getDomain());
+      }
+
+      if(!domainVersion.equals(attributeFile.getDomainVersion())) {
+        throw new Exception("Versions do not match: " + domainVersion + " != " + attributeFile.getDomainVersion());
+      }
     }
 
+    //VALIDATE ATTRIBUTE PATCH FILE
+
+    if(attributePatchFile != null) {
+      if(!attributePatchFile.getType().equals("attributePatch")) {
+        throw new Exception("Unknown attribute patch file type: " + attributePatchFile.getType());
+      }
+
+      if(!domain.equals(attributePatchFile.getDomain())) {
+        throw new Exception("Domains do not match: " + domain + " != " + attributePatchFile.getDomain());
+      }
+
+      if(!domainVersion.equals(attributePatchFile.getDomainVersion())) {
+        throw new Exception("Versions do not match: " + domainVersion + " != " + attributePatchFile.getDomainVersion());
+      }
+    }
+
+    //LOAD THE FILES
+
+    loadPatterns(patternFile, false);
+
+    if(patternPatchFile != null) {
+      loadPatterns(patternPatchFile, true);
+    }
+
+    if(attributeFile != null) {
+      loadAttributes(attributeFile);
+    }
+
+    if(attributePatchFile != null) {
+      loadAttributes(attributePatchFile);
+    }
+  }
+
+  private void loadPatterns(JsonFile patternFile, boolean patch) throws Exception {
     Main.log("Loading pattern domain: " + patternFile.getDomain() + ", version: " +
         patternFile.getDomainVersion() + (patch ? ", patch" : ""), 1);
 
@@ -179,10 +227,6 @@ public class TextGlassClient {
         if(simpleHashCount < 1) {
           throw new Exception("Invalid value of simpleHashCount: " + simpleHashCount);
         }
-
-        if(!patch) {
-          patterns = new HashMap<>(simpleHashCount);
-        }
       }
 
       //PATTERNS
@@ -231,24 +275,9 @@ public class TextGlassClient {
     }
   }
 
-  public void loadAttributes(JsonFile attributeFile) throws Exception {
-
-    //PARSE ATTRIBUTE FILE JSON
-    
-    if(!attributeFile.getType().equals("pattern") && !attributeFile.getType().equals("attribute") &&
-        !attributeFile.getType().equals("patternPatch") && !attributeFile.getType().equals("attributePatch")) {
-      throw new Exception("Unknown attribute file type: " + attributeFile.getType());
-    }
-
-    if(!attributeFile.getDomain().equals(domain)) {
-      throw new Exception("Domains do not match: " + domain + " != " + attributeFile.getDomain());
-    }
-
-    if(!attributeFile.getDomainVersion().equals(domainVersion)) {
-      throw new Exception("DomainVersions do not match: " + domainVersion + " != " + attributeFile.getDomainVersion());
-    }
-
-    Main.log("Loading attributes: " + attributeFile.getDomain() + ", version: " + attributeFile.getDomainVersion(), 1);
+  private void loadAttributes(JsonFile attributeFile) throws Exception {
+    Main.log("Loading attributes: " + attributeFile.getDomain() +
+        ", version: " + attributeFile.getDomainVersion(), 1);
 
     //ATTRIBUTES
 

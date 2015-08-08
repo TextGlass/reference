@@ -35,11 +35,13 @@ do
     echo
     echo "Testing domain: $DOMAIN"
 
-    P=`find $DROOT -type f | grep pattern | sort | sed "s/^/-p /" | xargs echo`
-    A=`find $DROOT -type f | grep attribute | sort | sed "s/^/-a /" | xargs echo`
+    P=`find $DROOT -type f | grep pattern | grep -v patch | sort | sed "s/^/-p /" | xargs echo`
+    PP=`find $DROOT -type f | grep pattern | grep patch | sort | sed "s/^/-pp /" | xargs echo`
+    A=`find $DROOT -type f | grep attribute | grep -v patch | sort | sed "s/^/-a /" | xargs echo`
+    AP=`find $DROOT -type f | grep attribute | grep patch | sort | sed "s/^/-ap /" | xargs echo`
     T=`find $DROOT -type f | grep test | sort | sed "s/^/-t /" | xargs echo`
 
-    CMD="./run.sh $P $A $T -q"
+    CMD="`echo ./run.sh $P $PP $A $AP $T -q`"
 
     echo "CMD: $CMD"
 

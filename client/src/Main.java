@@ -31,8 +31,11 @@ public class Main {
   public static void main(String args[]) throws Exception {
     log("TextGlass Reference Client " + TextGlassClient.VERSION, -1);
 
-    List<String> patterns = new ArrayList<>();
-    List<String> attributes = new ArrayList<>();
+    String pattern = null;
+    String attribute = null;
+    String patternPatch = null;
+    String attributePatch = null;
+    
     List<String> tests = new ArrayList<>();
 
     String testString = null;
@@ -51,9 +54,25 @@ public class Main {
         printHelp();
         return;
       } else if(option.equals("-p")) {
-        patterns.add(getParam(args, ++i, "-p file parameter missing"));
+        if(pattern != null) {
+          throw new Exception("pattern file already defined");
+        }
+        pattern = getParam(args, ++i, "-p file parameter missing");
       } else if(option.equals("-a")) {
-        attributes.add(getParam(args, ++i, "-a file parameter missing"));
+        if(attribute != null) {
+          throw new Exception("attribute file already defined");
+        }
+        attribute = getParam(args, ++i, "-a file parameter missing");
+      } else if(option.equals("-pp")) {
+        if(patternPatch != null) {
+          throw new Exception("pattern patch file already defined");
+        }
+        patternPatch = getParam(args, ++i, "-pp file parameter missing");
+      } else if(option.equals("-ap")) {
+        if(attributePatch != null) {
+          throw new Exception("attribute patch file already defined");
+        }
+        attributePatch = getParam(args, ++i, "-ap file parameter missing");
       } else if(option.equals("-t")) {
         tests.add(getParam(args, ++i, "-t file parameter missing"));
       } else if(!option.startsWith("-") && testString == null) {
@@ -72,15 +91,29 @@ public class Main {
       }
     }
 
-    if(patterns.isEmpty()) {
+    if(pattern == null) {
       printHelp();
       throw new Exception("Pattern file required");
+    }
+
+    log("Pattern file: '" + pattern + "'", 0);
+
+    if(patternPatch != null) {
+      log("Pattern patch file: '" + patternPatch + "'", 0);
+    }
+
+    if(attribute != null) {
+      log("Attribute file: '" + attribute + "'", 0);
+    }
+
+    if(attributePatch != null) {
+      log("Attribute patch file: '" + attributePatch + "'", 0);
     }
 
     //WARMUP
     
     if(warmup != null) {
-      runWarmup(warmup, patterns, attributes, tests);
+      //runWarmup(warmup, patterns, attributes, tests);
     }
 
     //BUILD THE TEXTGLASS CLIENT
@@ -89,16 +122,8 @@ public class Main {
 
     TextGlassClient client = new TextGlassClient();
 
-    for(String pattern : patterns) {
-      log("Pattern file: '" + pattern + "'", 0);
-      client.loadPatterns(new JsonFile(pattern));
-    }
-
-    for(String attribute : attributes) {
-      log("Attribute file: '" + attribute + "'", 0);
-      client.loadAttributes(new JsonFile(attribute));
-    }
-
+    client.load(loadJson(pattern), loadJson(patternPatch), loadJson(attribute), loadJson(attributePatch));
+    
     time = System.nanoTime() - start;
     log("Domain load time: " + getTime(time), -1);
 
@@ -131,6 +156,8 @@ public class Main {
     log("Usage: " + Main.class.getName() + " [OPTIONS] [STRING]\n", -1);
     log("  -p <file>            load TextGlass pattern file (REQUIRED)", -1);
     log("  -a <file>            load TextGlass attribute file", -1);
+    log("  -pp <file>           load TextGlass pattern patch file", -1);
+    log("  -ap <file>           load TextGlass attribute patch file", -1);
     log("  -t <file>            load TextGlass test file", -1);
     log("  -h                   print help", -1);
     log("  -w <iterations>      run warmup", -1);
@@ -263,7 +290,7 @@ public class Main {
     return testCount != passCount;
   }
 
-  public static void runWarmup(String warmupStr, List<String> p, List<String> a, List<String> t) throws Exception {
+  public static void runWarmup(String warmupStr, String p, String pp, String a, String ap, List<String> t) throws Exception {
     int warmup = 0;
 
     try {
@@ -284,15 +311,14 @@ public class Main {
     long iterations = 0;
 
     while(iterations < warmup) {
+      JsonFile pf = loadJson(p);
+      JsonFile ppf = loadJson(pp);
+      JsonFile af = loadJson(a);
+      JsonFile apf = loadJson(ap);
+
       TextGlassClient client = new TextGlassClient();
 
-      for(String pattern : p) {
-        client.loadPatterns(new JsonFile(pattern));
-      }
-
-      for(String attribute : a) {
-        client.loadAttributes(new JsonFile(attribute));
-      }
+      client.load(pf, ppf, af, apf);
 
       for(String test : t) {
         test(client, new JsonFile(test));
@@ -307,6 +333,14 @@ public class Main {
     verbose = origVerbose;
 
     log("Warmup completed", -1);
+  }
+
+  private static JsonFile loadJson(String path) throws Exception {
+    if(path == null) {
+      return null;
+    } else {
+      return new JsonFile(path);
+    }
   }
 
   public static String getTime(long ns)
