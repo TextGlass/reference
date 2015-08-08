@@ -113,7 +113,7 @@ public class Main {
     //WARMUP
     
     if(warmup != null) {
-      //runWarmup(warmup, patterns, attributes, tests);
+      runWarmup(warmup, pattern, patternPatch, attribute, attributePatch, tests);
     }
 
     //BUILD THE TEXTGLASS CLIENT
@@ -311,14 +311,9 @@ public class Main {
     long iterations = 0;
 
     while(iterations < warmup) {
-      JsonFile pf = loadJson(p);
-      JsonFile ppf = loadJson(pp);
-      JsonFile af = loadJson(a);
-      JsonFile apf = loadJson(ap);
-
       TextGlassClient client = new TextGlassClient();
 
-      client.load(pf, ppf, af, apf);
+      client.load(loadJson(p), loadJson(pp), loadJson(a), loadJson(ap));
 
       for(String test : t) {
         test(client, new JsonFile(test));
