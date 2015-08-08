@@ -23,6 +23,10 @@
       "resultPatternId": "pattern3"
     },
     {
+      "input": "no one knows what this stuff is anyway!",
+      "resultPatternId": "unknown"
+    },
+    {
       "input": "one two three four five six ,bingo;;, seven",
       "resultPatternId": "pattern1"
     },
