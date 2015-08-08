@@ -24,7 +24,10 @@
     },
     {
       "input": "no one knows what this stuff is anyway!",
-      "resultPatternId": "unknown"
+      "resultPatternId": "unknown",
+      "resultAttributes": {
+        "error": "true"
+      }
     },
     {
       "input": "one two three four five six ,bingo;;, seven",
