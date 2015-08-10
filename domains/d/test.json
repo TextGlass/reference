@@ -5,6 +5,10 @@
   "domainVersion": "1.0",
   "description": "reference domain d test suite",
   "publishDate": "2015-08-01T15:18:43-0400",
+  "legal": {
+    "copyright": "(c) 2015 TextGlass",
+    "license": "none"
+  },
   "tests": [
     {
       "input": "test aaa bbb done",

@@ -17,15 +17,20 @@ HEADER="{\"TextGlassSpecVersion\": 1.0,\"type\":\"TYPE\",\"domain\":\"reference_
 \"domainVersion\":\"$VERSION\",\"description\":\"reference domain $NAME, performance\"\
 ,\"publishDate\":\"$DATE\","
 
+LEGAL="\"legal\": {\"copyright\": \"(c) 2015 TextGlass\",\"license\":\"none\"},"
+
 echo $HEADER | sed "s/TYPE/pattern/" > $POUT
+echo $LEGAL >> $POUT
 echo "\"inputParser\":{\"transformers\":[{\"type\":\"LowerCase\"}]," >> $POUT
 echo "\"tokenSeperators\":[\" \",\",\",\";\"],\"ngramConcatSize\":2}," >> $POUT
 echo "\"patternSet\":{\"defaultId\":\"unknown\",\"simpleHashCount\":$TOTAL,\"patterns\":[" >> $POUT
 
 echo $HEADER | sed "s/TYPE/attribute/" > $AOUT
+echo $LEGAL >> $AOUT
 echo "\"attributes\":{" >> $AOUT
 
 echo $HEADER | sed "s/TYPE/test/" > $TOUT
+echo $LEGAL >> $TOUT
 echo "\"tests\":[" >> $TOUT
 
 while [ "$CURRENT" != "$END" ]

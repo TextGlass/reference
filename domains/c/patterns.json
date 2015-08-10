@@ -5,6 +5,10 @@
   "domainVersion": "1.0",
   "description": "reference domain c, transformers",
   "publishDate": "2015-08-01T12:32:50-0400",
+  "legal": {
+    "copyright": "(c) 2015 TextGlass",
+    "license": "none"
+  },
   "patternSet": {
     "patterns": [
       {

@@ -3,8 +3,12 @@
   "type": "pattern",
   "domain": "reference_e",
   "domainVersion": "1.0",
-  "description": "reference domain a, patch files",
+  "description": "reference domain e, patch files",
   "publishDate": "2015-08-01T17:41:44-0400",
+  "legal": {
+    "copyright": "(c) 2015 TextGlass",
+    "license": "none"
+  },
   "inputParser": {
     "tokenSeperators": [ " ", ",", ";" ],
     "ngramConcatSize": 2
