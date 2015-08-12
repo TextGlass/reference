@@ -14,7 +14,6 @@
     "ngramConcatSize": 2
   },
   "patternSet": {
-    "simpleHashCount": 3,
     "patterns": [
       {
         "patternId": "p1",

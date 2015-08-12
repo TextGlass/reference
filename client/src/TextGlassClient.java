@@ -208,8 +208,6 @@ public class TextGlassClient {
 
     //PATTERN SET
 
-    int simpleHashCount = 0;
-
     if(JsonFile.get(patternFile.getJsonNode(), "patternSet").isObject()) {
       JsonNode patternSet = patternFile.getJsonNode().get("patternSet");
 
@@ -217,15 +215,6 @@ public class TextGlassClient {
         defaultId = patternSet.get("defaultId").asText();
 
         Main.log("Found defaultId: " + defaultId, 2);
-      }
-
-      if(patternSet.get("simpleHashCount") != null) {
-        String simpleHashCountStr = patternSet.get("simpleHashCount").asText();
-        simpleHashCount = Integer.parseInt(simpleHashCountStr);
-
-        if(simpleHashCount < 1) {
-          throw new Exception("Invalid value of simpleHashCount: " + simpleHashCount);
-        }
       }
 
       //PATTERNS
@@ -258,10 +247,6 @@ public class TextGlassClient {
 
       if(patternCount == 0 && defaultId == null) {
         throw new Exception("No patterns found");
-      }
-
-      if(simpleHashCount > 0 && (patternCount != simpleHashCount)) {
-        throw new Exception("Bad simpleHashCount value, found: " + simpleHashCount + ", expected: " + patternCount);
       }
 
       Main.log("Found " + patternCount + " pattern(s), total: " + patterns.size(), 1);

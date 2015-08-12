@@ -20,7 +20,6 @@
   },
   "patternSet": {
     "defaultId": "unknown",
-    "simpleHashCount": 2,
     "patterns": [
       {
         "patternId": "iphone",

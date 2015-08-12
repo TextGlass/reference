@@ -3,7 +3,6 @@
 CURRENT=13000
 END=16000
 SKIP=5
-TOTAL=4800
 
 NAME=f
 VERSION=1.0
@@ -23,7 +22,7 @@ echo $HEADER | sed "s/TYPE/pattern/" > $POUT
 echo $LEGAL >> $POUT
 echo "\"inputParser\":{\"transformers\":[{\"type\":\"LowerCase\"}]," >> $POUT
 echo "\"tokenSeperators\":[\" \",\",\",\";\"],\"ngramConcatSize\":2}," >> $POUT
-echo "\"patternSet\":{\"defaultId\":\"unknown\",\"simpleHashCount\":$TOTAL,\"patterns\":[" >> $POUT
+echo "\"patternSet\":{\"defaultId\":\"unknown\",\"patterns\":[" >> $POUT
 
 echo $HEADER | sed "s/TYPE/attribute/" > $AOUT
 echo $LEGAL >> $AOUT
