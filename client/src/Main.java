@@ -28,7 +28,7 @@ public class Main {
   private static int verbose = 1;
   
   public static void main(String args[]) throws Exception {
-    log("TextGlass Reference Client " + TextGlassClient.VERSION, -1);
+    log("TextGlass Reference Client " + TextGlassClient.VERSION, 0);
 
     String pattern = null;
     String attribute = null;
@@ -79,7 +79,7 @@ public class Main {
       } else if(option.equals("-w")) {
         warmup = getParam(args, ++i, "-w iterations missing");
       } else if(option.equals("-q")) {
-        verbose = -1;
+        verbose = 0;
       } else if(option.equals("-v")) {
         verbose = 2;
       } else if(option.equals("-vv")) {
@@ -95,18 +95,18 @@ public class Main {
       throw new Exception("Pattern file required");
     }
 
-    log("Pattern file: '" + pattern + "'", 0);
+    log("Pattern file: '" + pattern + "'", 1);
 
     if(patternPatch != null) {
-      log("Pattern patch file: '" + patternPatch + "'", 0);
+      log("Pattern patch file: '" + patternPatch + "'", 1);
     }
 
     if(attribute != null) {
-      log("Attribute file: '" + attribute + "'", 0);
+      log("Attribute file: '" + attribute + "'", 1);
     }
 
     if(attributePatch != null) {
-      log("Attribute patch file: '" + attributePatch + "'", 0);
+      log("Attribute patch file: '" + attributePatch + "'", 1);
     }
 
     //WARMUP
@@ -124,17 +124,17 @@ public class Main {
     client.load(loadJson(pattern), loadJson(patternPatch), loadJson(attribute), loadJson(attributePatch));
     
     time = System.nanoTime() - start;
-    log("Domain load time: " + getTime(time), -1);
+    log("Domain load time: " + getTime(time), 0);
 
     //DO THE TESTS
 
     for(String test : tests) {
-      log("Test file: '" + test + "'", 0);
+      log("Test file: '" + test + "'", 1);
       failure |= test(client, new JsonFile(test));
     }
 
     if(testString != null) {
-      log("Test string: '" + testString + "'", 0);
+      log("Test string: '" + testString + "'", 1);
 
       start = System.nanoTime();
 
@@ -142,8 +142,8 @@ public class Main {
 
       time = System.nanoTime() - start;
 
-      log("Test result: " + result, -1);
-      log("Test time: " + getTime(time), -1);
+      log("Test result: " + result, 0);
+      log("Test time: " + getTime(time), 0);
     }
 
     if(failure) {
@@ -152,19 +152,19 @@ public class Main {
   }
 
   private static void printHelp() {
-    log("Usage: " + Main.class.getName() + " [OPTIONS] [STRING]\n", -1);
-    log("  -p <file>            load TextGlass pattern file (REQUIRED)", -1);
-    log("  -a <file>            load TextGlass attribute file", -1);
-    log("  -pp <file>           load TextGlass pattern patch file", -1);
-    log("  -ap <file>           load TextGlass attribute patch file", -1);
-    log("  -t <file>            load TextGlass test file", -1);
-    log("  -h                   print help", -1);
-    log("  -w <iterations>      run warmup", -1);
-    log("  -q                   quiet", -1);
-    log("  -v                   verbose", -1);
-    log("  -vv                  very verbose", -1);
-    log("  STRING               test string", -1);
-    log("", -1);
+    log("Usage: " + Main.class.getName() + " [OPTIONS] [STRING]\n", 0);
+    log("  -p <file>            load TextGlass pattern file (REQUIRED)", 0);
+    log("  -a <file>            load TextGlass attribute file", 0);
+    log("  -pp <file>           load TextGlass pattern patch file", 0);
+    log("  -ap <file>           load TextGlass attribute patch file", 0);
+    log("  -t <file>            load TextGlass test file", 0);
+    log("  -h                   print help", 0);
+    log("  -w <iterations>      run warmup", 0);
+    log("  -q                   quiet", 0);
+    log("  -v                   verbose", 0);
+    log("  -vv                  very verbose", 0);
+    log("  STRING               test string", 0);
+    log("", 0);
   }
 
   private static String getParam(String args[], int pos, String error) throws Exception {
@@ -274,7 +274,7 @@ public class Main {
             passCount++;
             log("Passed, expected patternId: " + resultPatternId, 2);
           } else if(!pass) {
-            log("FAILED, expected patternId: " + resultPatternId + ", found: " + patternId, 2);
+            log("FAILED, expected patternId: " + resultPatternId + ", found: " + patternId, 1);
           }
 
           testCount++;
@@ -283,8 +283,8 @@ public class Main {
 
     time = System.nanoTime() - start;
 
-    log("Test passed " + passCount + " out of " + testCount + ". " + (testCount == passCount ? "PASS" : "FAIL"), -1);
-    log("Test time: " + getTime(time), -1);
+    log("Test passed " + passCount + " out of " + testCount + ". " + (testCount == passCount ? "PASS" : "FAIL"), 0);
+    log("Test time: " + getTime(time), 0);
 
     return testCount != passCount;
   }
@@ -302,10 +302,10 @@ public class Main {
       throw new Exception("Invalid warmup value: " + warmup);
     }
 
-    log("Warmup " + warmup + " iterations(s)...", -1);
+    log("Warmup " + warmup + " iterations(s)...", 0);
 
     int origVerbose = verbose;
-    verbose = -2;
+    verbose = -1;
 
     long iterations = 0;
 
@@ -326,7 +326,7 @@ public class Main {
 
     verbose = origVerbose;
 
-    log("Warmup completed", -1);
+    log("Warmup completed", 0);
   }
 
   private static JsonFile loadJson(String path) throws Exception {
