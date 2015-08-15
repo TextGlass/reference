@@ -218,7 +218,7 @@ public class Main {
         for(int i = 0; i < tests.getJsonNode().get("tests").size(); i++) {
           JsonNode test = tests.getJsonNode().get("tests").get(i);
 
-          if(JsonFile.get(test, "input").asText().isEmpty()) {
+          if(JsonFile.get(test, "input").isNull()) {
             throw new Exception("Bad test input found, position: " + testCount);
           }
 
