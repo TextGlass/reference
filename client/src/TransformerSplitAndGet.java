@@ -22,20 +22,20 @@ import java.util.List;
 import org.codehaus.jackson.JsonNode;
 
 public class TransformerSplitAndGet implements Transformer {
-  private final List<String> delimeter;
+  private final List<String> delimiter;
   private final int get;
 
   public TransformerSplitAndGet(JsonNode json) throws Exception {
-    if(JsonFile.empty(json, "delimeter")) {
-      throw new Exception("SplitAndGet delimeter not defined");
+    if(JsonFile.empty(json, "delimiter")) {
+      throw new Exception("SplitAndGet delimiter not defined");
     }
 
     if(JsonFile.empty(json, "get")) {
       throw new Exception("SplitAndGet get not defined");
     }
 
-    delimeter = new ArrayList<>();
-    delimeter.add(json.get("delimeter").asText());
+    delimiter = new ArrayList<>();
+    delimiter.add(json.get("delimiter").asText());
     
     get = Integer.parseInt(json.get("get").asText());
 
@@ -46,7 +46,7 @@ public class TransformerSplitAndGet implements Transformer {
 
   @Override
   public String transform(String input) throws Exception {
-    List<String> parts = TextGlassClient.split(input, delimeter);
+    List<String> parts = TextGlassClient.split(input, delimiter);
     
     int i = get;
 
@@ -63,6 +63,6 @@ public class TransformerSplitAndGet implements Transformer {
 
   @Override
   public String toString() {
-    return "SplitAndGet  delimeter: '" + delimeter + "'  get: " + get;
+    return "SplitAndGet  delimiter: '" + delimiter + "'  get: " + get;
   }
 }
