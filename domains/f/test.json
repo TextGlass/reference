@@ -1,4 +1,4 @@
-{"TextGlassSpecVersion": 1.0,"type":"test","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-12T15:41:29-0400",
+{"TextGlassSpecVersion": 1.0,"type":"test","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-17T19:36:44-0400",
 "legal": {"copyright": "(c) 2015 TextGlass","license":"none"},
 "tests":[
 {"input":"This number 13000 is unknown","resultPatternId":"unknown"},

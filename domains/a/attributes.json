@@ -48,14 +48,14 @@
             {
               "type": "SplitAndGet",
               "parameters": {
-                "delimeter": "ccc",
+                "delimiter": "ccc",
                 "get": 0
               }
             },
             {
               "type": "SplitAndGet",
               "parameters": {
-                "delimeter": " ",
+                "delimiter": " ",
                 "get": -1
               }
             },

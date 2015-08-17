@@ -163,7 +163,7 @@
             {
               "type": "SplitAndGet",
               "parameters": {
-                "delimeter": " ",
+                "delimiter": " ",
                 "get": 2
               }
             }

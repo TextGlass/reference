@@ -75,7 +75,7 @@ do
     #ATTRIBUTE
     echo "\"p$CURRENT\":{\"attributes\":{\"oe\":\"?\"}," >> $AOUT
     echo "\"attributeTransformers\":{\"number\":{\"transformers\":[{\"type\":\"SplitAndGet\"," >> $AOUT
-    echo "\"parameters\":{\"delimeter\":\" \",\"get\":2}},{\"type\":\"IsNumber\"}]}}}," >> $AOUT
+    echo "\"parameters\":{\"delimiter\":\" \",\"get\":2}},{\"type\":\"IsNumber\"}]}}}," >> $AOUT
     echo "\"p$CURRENT$ODDEVENP\":{\"attributes\":{\"number\":\"oddeven\",\"oe\":\"$ODDEVEN\"}}$LAST" >> $AOUT
 
     CURRENT=`expr $CURRENT + 1`
