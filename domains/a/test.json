@@ -42,7 +42,7 @@
       "resultPatternId": "pattern1"
     },
     {
-      "input": "one 222 ccc ready",
+      "input": "one 222 cc ready",
       "resultPatternId": "pattern4",
       "resultAttributes": {
         "test": "4",
@@ -50,7 +50,7 @@
       }
     },
     {
-      "input": "one two ccc ready",
+      "input": "one two cc ready",
       "resultPatternId": "pattern4",
       "resultAttributes": {
         "test": "4",

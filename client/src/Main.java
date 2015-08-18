@@ -274,7 +274,7 @@ public class Main {
             passCount++;
             log("Passed, expected patternId: " + resultPatternId, 2);
           } else if(!pass) {
-            log("FAILED, expected patternId: " + resultPatternId + ", found: " + patternId, 1);
+            log("FAILED, expected patternId: " + resultPatternId + ", found: " + patternId, 2);
           }
 
           testCount++;

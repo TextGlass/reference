@@ -46,9 +46,16 @@
           "defaultValue": "error",
           "transformers": [
             {
+              "type": "ReplaceAll",
+              "parameters": {
+                "find": "c",
+                "replaceWith": "cc"
+              }
+            },
+            {
               "type": "SplitAndGet",
               "parameters": {
-                "delimiter": "ccc",
+                "delimiter": "cccc",
                 "get": 0
               }
             },

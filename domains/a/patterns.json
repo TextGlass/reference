@@ -20,6 +20,13 @@
           "find": "-",
           "replaceWith": ""
         }
+      },
+      {
+        "type": "ReplaceAll",
+        "parameters": {
+          "find": "c",
+          "replaceWith": "cc"
+        }
       }
     ],
     "tokenSeperators": [ " ", ",", ";" ],
@@ -52,7 +59,7 @@
         "patternId": "pattern4",
         "rankType": "Strong",
         "patternType": "Simple",
-        "patternTokens": ["Two", "ccc"]
+        "patternTokens": ["Two", "cccc"]
       },
       {
         "patternId": "pattern5",
