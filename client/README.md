@@ -30,25 +30,25 @@ The source is broken up into several components:
    This is the driver for the reference client. It contains logic to parse
    the command line and the test file.
 
- * src/TextGlassClient.java
+ * **src/TextGlassClient.java**
 
    This is the actual TextGlass client. It is initialized with a pattern file
    and an attribute file (or multiple). Once initialized, it can then classify
    text and return back attribute maps.
 
- * src/JsonFile.java
+ * **src/JsonFile.java**
 
    This parses a JSON file into something the TextGlassClient can handle.
 
- * src/Pattern.java
+ * **src/Pattern.java**
 
    This is a pattern object.
 
- * src/Attributes.java
+ * **src/Attributes.java**
 
    This is the pattern attributes object.
 
- * src/Transformer\*.java
+ * **src/Transformer\*.java**
 
    These are transformers.
 
