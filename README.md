@@ -1,17 +1,20 @@
 TextGlass Reference
 ===================
 
-What is textglass?
+What is TextGlass?
 ------------------
 
-TextGlass is primarily a text classification project. This encompasses
-things like device detection. Basically, give TextGlass a string (like
-a User-Agent request header) and it will tell you what it is. 
+TextGlass is a text classification project. This encompasses
+things like device, browser, and OS detection. Basically, give
+TextGlass a string (like a User-Agent request header) and it
+will tell you what it is.
 
 TextGlass has extended the idea of classification into generic domains.
 The domain tells the TextGlass client how to classify the input into a
 result. This will allow this project and 3rd parties to create their own
-domains and use them with standard TextGlass clients.
+domains and use them with standard TextGlass clients. This also allows
+you to a run a domain across a large variety of languages and platforms
+and achieve identical results.
 
 This reference is the starting point for:
 
