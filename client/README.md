@@ -25,7 +25,7 @@ https://github.com/TextGlass/reference/tree/master/client/src
 
 The source is broken up into several components:
 
- * src/Main.java
+ * **src/Main.java**
 
    This is the driver for the reference client. It contains logic to parse
    the command line and the test file.
