@@ -1,8 +1,8 @@
 TextGlass Reference
+===================
 
-
-WHAT IS TEXTGLASS?
-==================
+What is textglass?
+------------------
 
 TextGlass is primarily a text classification project. This encompasses
 things like device detection. Basically, give TextGlass a string (like
@@ -16,17 +16,14 @@ domains and use them with standard TextGlass clients.
 This reference is the starting point for:
 
  * Creating, testing, and validating a TextGlass domain.
-
  * Creating a TextGlass client for a specific platform or language.
 
+Specification
+-------------
 
-SPECIFICATION
-=============
+[https://github.com/TextGlass/reference/wiki/Domain-Specification]
 
-https://github.com/TextGlass/reference/wiki/Domain-Specification
+More information
+----------------
 
-
-MORE INFORMATION
-================
-
-Please see client/README for more information.
+Please see [client/README] for more information.
