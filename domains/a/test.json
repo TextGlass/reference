@@ -7,7 +7,7 @@
   "publishDate": "2015-07-10T15:14:00-0400",
   "legal": {
     "copyright": "(c) 2015 TextGlass",
-    "license": "none"
+    "license": "Apache License 2.0"
   },
   "tests": [
     {

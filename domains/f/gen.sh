@@ -16,7 +16,7 @@ HEADER="{\"TextGlassSpecVersion\": 1.0,\"type\":\"TYPE\",\"domain\":\"reference_
 \"domainVersion\":\"$VERSION\",\"description\":\"reference domain $NAME, performance\"\
 ,\"publishDate\":\"$DATE\","
 
-LEGAL="\"legal\": {\"copyright\": \"(c) 2015 TextGlass\",\"license\":\"none\"},"
+LEGAL="\"legal\": {\"copyright\": \"(c) 2015 TextGlass\",\"license\":\"Apache License 2.0\"},"
 
 echo $HEADER | sed "s/TYPE/pattern/" > $POUT
 echo $LEGAL >> $POUT

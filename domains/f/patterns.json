@@ -1,5 +1,5 @@
-{"TextGlassSpecVersion": 1.0,"type":"pattern","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-17T19:36:44-0400",
-"legal": {"copyright": "(c) 2015 TextGlass","license":"none"},
+{"TextGlassSpecVersion": 1.0,"type":"pattern","domain":"reference_f","domainVersion":"1.0","description":"reference domain f, performance","publishDate":"2015-08-30T16:46:15-0400",
+"legal": {"copyright": "(c) 2015 TextGlass","license":"Apache License 2.0"},
 "inputParser":{"transformers":[{"type":"LowerCase"}],
 "tokenSeperators":[" ",",",";"],"ngramConcatSize":2},
 "patternSet":{"defaultId":"unknown","patterns":[
