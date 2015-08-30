@@ -21,9 +21,9 @@ This reference is the starting point for:
 Specification
 -------------
 
-[https://github.com/TextGlass/reference/wiki/Domain-Specification]
+https://github.com/TextGlass/reference/wiki/Domain-Specification
 
 More information
 ----------------
 
-Please see [client/README] for more information.
+Please see [client/README.md](client/README.md) for more information.
