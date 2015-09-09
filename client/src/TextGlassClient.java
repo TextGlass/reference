@@ -27,7 +27,7 @@ import org.codehaus.jackson.JsonNode;
 
 public class TextGlassClient {
   
-  public final static String VERSION = "1.0.0 alpha";
+  public final static String VERSION = "1.0.0";
 
   private String domain;
   private String domainVersion;
