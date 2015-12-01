@@ -5,7 +5,7 @@ What is TextGlass?
 ------------------
 
 TextGlass is a text classification project. This encompasses
-things like device, browser, and OS detection. Basically, give
+things like device, browser, and OS detection. Give
 TextGlass a string (like a User-Agent request header) and it
 will tell you what it is.
 
@@ -26,7 +26,13 @@ Specification
 
 https://github.com/TextGlass/reference/wiki/Domain-Specification
 
+Releases
+--------
+
+http://textglass.org/releases/reference/
+
 More information
 ----------------
 
 Please see [client/README.md](client/README.md) for more information.
+
