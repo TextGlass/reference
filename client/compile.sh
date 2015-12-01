@@ -33,5 +33,5 @@ javac -cp "$LIBS" src/*.java -d bin
 if [ "$1" = "dist" ]
 then
     echo "Creating distribution"
-    jar cf textglass-reference.jar -C bin .
+    jar cf textglass-reference.jar -C bin . -C src .
 fi
